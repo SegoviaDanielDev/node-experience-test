@@ -42,6 +42,8 @@ import FileMikroORMRepository from './File/Infrastructure/Repositories/FileMikro
 import TokenRedisRepository from './Auth/Infrastructure/Repositories/TokenRedisRepository';
 import IEncryption from './Shared/Infrastructure/Encryption/IEncryption';
 import ITokenRepository from './Auth/Infrastructure/Repositories/ITokenRepository';
+import IProductRepository from './Product/Infrastructure/Repositories/IProductRepository';
+import ProductMongooseRepository from './Product/Infrastructure/Repositories/ProductMongooseRepository';
 
 // Services
 container.register(SERVICES.AuthService, { useClass: AuthService }, { lifecycle: Lifecycle.Singleton });
@@ -55,6 +57,7 @@ if (defaultDbConfig === 'TypeORM')
     container.register<IUserRepository>(REPOSITORIES.IUserRepository, { useClass: UserTypeORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IRoleRepository>(REPOSITORIES.IRoleRepository, { useClass: RoleTypeORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IItemRepository>(REPOSITORIES.IItemRepository, { useClass: ItemTypeORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
+    // container.register<IProductRepository>(REPOSITORIES.IProductRepository, { useClass: ProductTypeOrmRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IFileRepository>(REPOSITORIES.IFileRepository, { useClass: FileTypeORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
 }
 else if (defaultDbConfig === 'Mongoose')
@@ -62,6 +65,7 @@ else if (defaultDbConfig === 'Mongoose')
     container.register<IUserRepository>(REPOSITORIES.IUserRepository, { useClass: UserMongooseRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IRoleRepository>(REPOSITORIES.IRoleRepository, { useClass: RoleMongooseRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IItemRepository>(REPOSITORIES.IItemRepository, { useClass: ItemMongooseRepository }, { lifecycle: Lifecycle.ContainerScoped });
+    container.register<IProductRepository>(REPOSITORIES.IProductRepository, { useClass: ProductMongooseRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IFileRepository>(REPOSITORIES.IFileRepository, { useClass: FileMongooseRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<INotificationRepository<INotificationDomain>>(REPOSITORIES.INotificationRepository, { useClass: NotificationMongooseRepository }, { lifecycle: Lifecycle.ContainerScoped });
 }
@@ -70,6 +74,7 @@ else if (defaultDbConfig === 'MikroORM')
     container.register<IUserRepository>(REPOSITORIES.IUserRepository, { useClass: UserMikroORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IRoleRepository>(REPOSITORIES.IRoleRepository, { useClass: RoleMikroORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IItemRepository>(REPOSITORIES.IItemRepository, { useClass: ItemMikroORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
+    // container.register<IProductRepository>(REPOSITORIES.IProductRepository, { useClass: ProductMikroORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
     container.register<IFileRepository>(REPOSITORIES.IFileRepository, { useClass: FileMikroORMRepository }, { lifecycle: Lifecycle.ContainerScoped });
 }
 

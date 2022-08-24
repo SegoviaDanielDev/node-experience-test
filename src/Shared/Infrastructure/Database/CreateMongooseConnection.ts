@@ -16,6 +16,8 @@ import FileSchema from '../../../File/Infrastructure/Schemas/FileMongoose';
 import { EmailNotificationSchema, NotificationSchema, PushNotificationSchema } from '../../../Notification/Infrastructure/Schemas/NotificationMongoose';
 import TokenSchema from '../../../Auth/Infrastructure/Schemas/TokenMongoose';
 import ICreateConnection from './ICreateConnection';
+import ProductMongooseDocument from '../../../Product/Infrastructure/Schemas/ProductMongooseDocument';
+import ProductSchema from '../../../Product/Infrastructure/Schemas/ProductMongoose';
 
 export let connection: mongoose.Connection = null;
 
@@ -62,6 +64,7 @@ class CreateMongooseConnection implements ICreateConnection
         connection.model<UserMongooseDocument>('User', UserSchema);
         connection.model<RoleMongooseDocument>('Role', RoleSchema);
         connection.model<ItemMongooseDocument>('Item', ItemSchema);
+        connection.model<ProductMongooseDocument>('Product', ProductSchema);
         connection.model<FileMongooseDocument>('File', FileSchema);
 
         // Infrastructure
