@@ -23,11 +23,11 @@ class ProductMongooseRepository extends BaseMongooseRepository<IProductDomain, I
         const queryBuilder: Query<IProduct[], IProduct> = this.repository.find();
         const filter = criteria.getFilter();
 
-        if (filter.has(ProductFilter.CATEGORY))
+        if (filter.has(ProductFilter.AMOUNT))
         {
-            const category = filter.get(ProductFilter.CATEGORY);
+            const amount = filter.get(ProductFilter.AMOUNT);
 
-            void queryBuilder.where(ProductFilter.CATEGORY).equals(category);
+            void queryBuilder.where(ProductFilter.AMOUNT).equals(amount);
         }
 
         if (filter.has(ProductFilter.NAME))

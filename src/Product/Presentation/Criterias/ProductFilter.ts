@@ -11,9 +11,8 @@ class ProductFilter extends Filter
     {
         return [
             ProductFilter.NAME,
-            ProductFilter.CATEGORY,
-            ProductFilter.AMOUNT,
-            ProductFilter.COLOR
+            ProductFilter.AMOUNT
+
         ];
     }
 
